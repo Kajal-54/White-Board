@@ -3,11 +3,11 @@
 
 <div align="center">
 
-<a href="https://github.com/japneetbhatia/White-Board"><img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=103"></a>
+<a href="https://github.com/Kajal-54/White-Board"><img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=103"></a>
   
-<a href="https://github.com/japneetbhatia/White-Board/search?l=html"><img src="https://img.shields.io/github/languages/top/japneetbhatia/White-Board"></a> 
-<a href="https://github.com/japneetbhatia/White-Board"><img src="https://img.shields.io/badge/platform-Visual%20Studio%20Code-blue"></a>
-<a href="https://github.com/japneetbhatia/"><img src="https://img.shields.io/badge/Maintained%3F-yes-brightgreen.svg?v=103"></a>
+<a href="https://github.com/Kajal-54/White-Board/search?l=html"><img src="https://img.shields.io/github/languages/top/japneetbhatia/White-Board"></a> 
+<a href="https://github.com/Kajal-54/White-Board"><img src="https://img.shields.io/badge/platform-Visual%20Studio%20Code-blue"></a>
+<a href="https://github.com/Kajal-54/"><img src="https://img.shields.io/badge/Maintained%3F-yes-brightgreen.svg?v=103"></a>
 
 </div>
 
