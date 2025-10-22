@@ -5,16 +5,13 @@
 
 <a href="https://github.com/japneetbhatia/White-Board"><img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=103"></a>
   
-<a href="https://github.com/japneetbhatia/White-Board"><img src="https://img.shields.io/github/repo-size/japneetbhatia/White-Board"></a>
 <a href="https://github.com/japneetbhatia/White-Board/search?l=html"><img src="https://img.shields.io/github/languages/top/japneetbhatia/White-Board"></a> 
 <a href="https://github.com/japneetbhatia/White-Board"><img src="https://img.shields.io/badge/platform-Visual%20Studio%20Code-blue"></a>
 <a href="https://github.com/japneetbhatia/"><img src="https://img.shields.io/badge/Maintained%3F-yes-brightgreen.svg?v=103"></a>
 
 <a href="https://github.com/japneetbhatia/White-Board/stargazers"><img src="https://img.shields.io/github/stars/japneetbhatia/White-Board?color=0059b3"></a>
 <a href="https://github.com/japneetbhatia/White-Board/issues"><img src="https://img.shields.io/github/issues/japneetbhatia/White-Board?color=0059b3"></a>
-<a href="https://github.com/japneetbhatia/White-Board/issues?q=is%3Aissue+is%3Aclosed"><img src="https://img.shields.io/github/issues-closed-raw/japneetbhatia/White-Board?color=yellow"></a>
 <a href="https://github.com/japneetbhatia/White-Board/pulls"><img src="https://img.shields.io/github/issues-pr/japneetbhatia/White-Board?color=brightgreen"></a>
-<a href="https://github.com/japneetbhatia/White-Board/pulls?q=is%3Apr+is%3Aclosed"><img src="https://img.shields.io/github/issues-pr-closed-raw/japneetbhatia/White-Board?color=0059b3"></a> 
 
 </div>
 
