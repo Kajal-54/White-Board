@@ -9,10 +9,6 @@
 <a href="https://github.com/japneetbhatia/White-Board"><img src="https://img.shields.io/badge/platform-Visual%20Studio%20Code-blue"></a>
 <a href="https://github.com/japneetbhatia/"><img src="https://img.shields.io/badge/Maintained%3F-yes-brightgreen.svg?v=103"></a>
 
-<a href="https://github.com/japneetbhatia/White-Board/stargazers"><img src="https://img.shields.io/github/stars/japneetbhatia/White-Board?color=0059b3"></a>
-<a href="https://github.com/japneetbhatia/White-Board/issues"><img src="https://img.shields.io/github/issues/japneetbhatia/White-Board?color=0059b3"></a>
-<a href="https://github.com/japneetbhatia/White-Board/pulls"><img src="https://img.shields.io/github/issues-pr/japneetbhatia/White-Board?color=brightgreen"></a>
-
 </div>
 
 
