@@ -20,11 +20,8 @@ This is a simple beginner friendly project, used for writing or drawing.
 + Javascript
 + JQuery
 ## Screenshots : 
-Light mode<br>
-![Display](https://github.com/Naman-mahi/White-Board/blob/master/images/lightmode.png)
-Dark mode 
-![Display](https://github.com/Naman-mahi/White-Board/blob/master/images/darkmode.png)
-Whiteboard 
-![Display](https://github.com/Naman-mahi/White-Board/blob/master/images/Whiteboard.png)
-Rectangle 
-![Display](https://github.com/Naman-mahi/White-Board/blob/master/images/Rectangle.png)
+![WhatsApp Image 2026-01-07 at 16 31 07](https://github.com/user-attachments/assets/a0cf4566-d8a2-484c-84a3-de783ef69f84)
+
+![WhatsApp Image 2026-01-07 at 16 31 55](https://github.com/user-attachments/assets/075f1d87-238f-48a8-8e57-68e90128dbde)
+![WhatsApp Image 2026-01-07 at 16 32 14](https://github.com/user-attachments/assets/1cba7e63-646e-4e83-ad75-42cfbbf87015)
+![WhatsApp Image 2026-01-07 at 16 31 27](https://github.com/user-attachments/assets/070bdac1-b625-4551-9e9c-fe91049c1419)
