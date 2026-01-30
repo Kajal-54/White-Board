@@ -45,6 +45,31 @@ body {
     margin-right: 30px;
     display: inline-block;
 }
+
+.drawing-tool .eraser {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  margin-right: 8px;
+}
+.drawing-tool .eraser .material-icons-outlined {
+  color: white; /* white in normal mode, will invert in dark mode */
+  font-size: 22px;
+}
+.drawing-tool .eraser .er {
+  display: none;
+}
+
+/* Active tool highlight */
+.active-tool {
+  outline: 2px solid #ffd54f;
+  transform: scale(1.05);
+}
 .search a{
   text-decoration: none;
   color:black;
@@ -203,4 +228,174 @@ margin-left: -20px;
 }
 .seven{
   margin-top: 1px;
+}
+
+/* ============================================
+   Saved Files Modal Styling
+   ============================================ */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow: auto;
+  animation: slideIn 0.3s ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+  background-color: #f8f9fa;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.close-modal {
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #999;
+  transition: color 0.2s;
+}
+
+.close-modal:hover {
+  color: #000;
+}
+
+.modal-body {
+  padding: 20px;
+  max-height: calc(80vh - 120px);
+  overflow-y: auto;
+}
+
+.modal-footer {
+  padding: 15px 20px;
+  border-top: 1px solid #ddd;
+  text-align: right;
+  background-color: #f8f9fa;
+}
+
+.save-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background-color: #fafafa;
+  transition: background-color 0.2s;
+}
+
+.save-item:hover {
+  background-color: #f0f0f0;
+}
+
+.save-info {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.save-info strong {
+  font-size: 1rem;
+  color: #333;
+  display: block;
+  margin-bottom: 5px;
+  word-break: break-word;
+}
+
+.save-info small {
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.save-actions {
+  display: flex;
+  gap: 8px;
+  margin-left: 15px;
+}
+
+.save-actions button {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+/* Dark mode adjustments */
+.dark .modal-content {
+  background-color: #333;
+  color: #fff;
+}
+
+.dark .modal-header {
+  background-color: #222;
+  border-bottom-color: #555;
+}
+
+.dark .modal-header h2 {
+  color: #fff;
+}
+
+.dark .close-modal {
+  color: #aaa;
+}
+
+.dark .close-modal:hover {
+  color: #fff;
+}
+
+.dark .modal-footer {
+  background-color: #222;
+  border-top-color: #555;
+}
+
+.dark .save-item {
+  background-color: #444;
+  border-color: #555;
+}
+
+.dark .save-item:hover {
+  background-color: #555;
+}
+
+.dark .save-info strong {
+  color: #fff;
+}
+
+.dark .save-info small {
+  color: #bbb;
 }

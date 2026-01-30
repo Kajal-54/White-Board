@@ -27,6 +27,8 @@
           <button onClick="undo_last()" type="button" class="button">Undo</button>
           <button onClick="redo_last()" type="button" class="button">Redo</button>
           <button onClick="clear_canvas()" type="button" class="button">Clear</button>
+          <button onClick="save_drawing()" type="button" class="button">Save</button>
+          <button onClick="load_drawing()" type="button" class="button">Load</button>
         </div>
 
         <div class="add-note">
@@ -39,6 +41,10 @@
         <div class="drawing-tool">
           <div onclick="pen_tool()" class="pen">
             <img src="images/paint-brush.png">
+          </div>
+          <div onclick="eraser_tool()" class="eraser">
+            <span class="material-icons-outlined">backspace</span>
+            <p class="er">Eraser</p>
           </div>
           <div onclick="draw_rect()" class="drawRect">
             <span class="material-icons-outlined"> crop_square </span>
@@ -82,6 +88,22 @@
       </div>
 
       <canvas id="canvas"></canvas>
+
+      <!-- Saved Files Modal -->
+      <div id="savedFilesModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Saved Drawings</h2>
+            <span class="close-modal" onclick="close_saved_files_modal()">&times;</span>
+          </div>
+          <div class="modal-body">
+            <div id="savedFilesList"></div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" onclick="close_saved_files_modal()">Close</button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- ✅ keep only these scripts -->

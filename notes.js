@@ -1,130 +1,131 @@
-const canvas = document.getElementById("canvas");
-canvas.width = window.innerWidth - 60;
-canvas.height = 500;
+// ============================================
+// Notes App with localStorage persistence
+// ============================================
 
-let context = canvas.getContext("2d");
-let start_bg_color = "white";
-context.fillStyle = start_bg_color;
-context.fillRect(0, 0, canvas.width, canvas.height);
+let notes = [];
+const STORAGE_KEY = "whiteboard_notes";
 
-let draw_color = "black";
-let draw_width = "2";
-let is_drawing = false;
+// DOM Elements
+const addBtn = document.getElementById("addBtn");
+const addTxt = document.getElementById("addTxt");
+const searchTxt = document.getElementById("searchTxt");
+const notesContainer = document.getElementById("notes");
 
-let restore_array = [];
-let index = -1;
-
-function change_color(element) {
-  draw_color = element.style.background;
+// Load notes from localStorage on page load
+function loadNotes() {
+  const stored = localStorage.getItem(STORAGE_KEY);
+  notes = stored ? JSON.parse(stored) : [];
+  renderNotes();
 }
 
-function pen_tool() {
-  canvas.addEventListener("mousedown", start, false);
-  canvas.addEventListener("mousemove", draw, false);
-  canvas.addEventListener("mouseup", stop, false);
-  canvas.addEventListener("mouseout", stop, false);
+// Save notes to localStorage
+function saveNotes() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
 }
 
-function start(event) {
-  is_drawing = true;
-  context.beginPath();
-  context.moveTo(
-    event.clientX - canvas.offsetLeft,
-    event.clientY - canvas.offsetTop
+// Add a new note
+function addNote() {
+  const text = addTxt.value.trim();
+  if (!text) {
+    alert("Please enter a note!");
+    return;
+  }
+
+  const note = {
+    id: Date.now(),
+    text: text,
+    createdAt: new Date().toLocaleString()
+  };
+
+  notes.unshift(note);
+  saveNotes();
+  addTxt.value = "";
+  renderNotes();
+}
+
+// Delete a note
+function deleteNote(id) {
+  if (confirm("Are you sure you want to delete this note?")) {
+    notes = notes.filter(note => note.id !== id);
+    saveNotes();
+    renderNotes();
+  }
+}
+
+// Edit a note
+function editNote(id) {
+  const note = notes.find(n => n.id === id);
+  if (!note) return;
+
+  const newText = prompt("Edit your note:", note.text);
+  if (newText !== null && newText.trim() !== "") {
+    note.text = newText.trim();
+    note.createdAt = new Date().toLocaleString(); // Update timestamp
+    saveNotes();
+    renderNotes();
+  }
+}
+
+// Search notes
+function searchNotes() {
+  const query = searchTxt.value.toLowerCase();
+  const filtered = notes.filter(note =>
+    note.text.toLowerCase().includes(query)
   );
-  event.preventDefault();
+  renderNotes(filtered);
 }
 
-function draw(event) {
-  if (is_drawing) {
-    context.lineTo(
-      event.clientX - canvas.offsetLeft,
-      event.clientY - canvas.offsetTop
-    );
-    context.strokeStyle = draw_color;
-    context.lineWidth = draw_width;
-    context.lineCap = "round";
-    context.lineJoin = "round";
-    context.stroke();
+// Render notes to the DOM
+function renderNotes(notesToRender = notes) {
+  notesContainer.innerHTML = "";
+
+  if (notesToRender.length === 0) {
+    notesContainer.innerHTML = "<p style='text-align:center; color:#999;'>No notes yet. Add one above!</p>";
+    return;
   }
-  event.preventDefault();
-}
 
-function stop(event) {
-  if (is_drawing) {
-    context.stroke();
-    context.closePath();
-    is_drawing = false;
-  }
-  event.preventDefault();
-
-  if (event.type != "mouseout") {
-    restore_array.push(context.getImageData(0, 0, canvas.width, canvas.height));
-    index += 1;
-  }
-}
-
-function clear_canvas() {
-  context.fillStyle = start_bg_color;
-  context.clearRect(0, 0, canvas.width, canvas.height);
-  context.fillRect(0, 0, canvas.width, canvas.height);
-  restore_array = [];
-  index = -1;
-}
-
-function undo_last() {
-  if (index <= 0) {
-    clear_canvas();
-  } else {
-    index -= 1;
-    restore_array.pop();
-    context.putImageData(restore_array[index], 0, 0);
-  }
-}
-
-// ✅ Working Screenshot Button
-const screenshotBtn = document.querySelector(".screenshot");
-if (screenshotBtn) {
-  screenshotBtn.addEventListener("click", () => {
-    const captureElement = document.getElementById("capture");
-
-    html2canvas(captureElement, {
-      useCORS: true,
-      backgroundColor: "#ffffff"
-    })
-      .then(canvas => {
-        // download image directly
-        const link = document.createElement("a");
-        link.download = "whiteboard_screenshot.png";
-        link.href = canvas.toDataURL("image/png");
-        link.click();
-      })
-      .catch(err => console.error("Screenshot failed:", err));
+  notesToRender.forEach(note => {
+    const noteCard = document.createElement("div");
+    noteCard.className = "card col-md-4 mx-2 my-2";
+    noteCard.style.width = "18rem";
+    noteCard.innerHTML = `
+      <div class="card-body">
+        <h5 class="card-title">Note</h5>
+        <p class="card-text">${escapeHtml(note.text)}</p>
+        <small class="text-muted">${note.createdAt}</small>
+        <div style="margin-top: 10px;">
+          <button class="btn btn-sm btn-warning mr-2" onclick="editNote(${note.id})">Edit</button>
+          <button class="btn btn-sm btn-danger" onclick="deleteNote(${note.id})">Delete</button>
+        </div>
+      </div>
+    `;
+    notesContainer.appendChild(noteCard);
   });
 }
 
-draw_rect = () => {
-  function getMousePos(canvas, evt) {
-    var rect = canvas.getBoundingClientRect();
-    return {
-      x: evt.clientX - rect.left,
-      y: evt.clientY - rect.top,
-    };
-  }
+// Helper: Escape HTML to prevent XSS
+function escapeHtml(text) {
+  const div = document.createElement("div");
+  div.textContent = text;
+  return div.innerHTML;
+}
 
-  var locA, locB;
-  canvas.addEventListener("mousedown", function (e) {
-    e.preventDefault();
-    context.beginPath();
-    locA = getMousePos(canvas, e);
-    stop();
-  });
+// Event Listeners
+if (addBtn) {
+  addBtn.addEventListener("click", addNote);
+}
 
-  canvas.addEventListener("mouseup", function (e) {
-    context.beginPath();
-    e.preventDefault();
-    locB = getMousePos(canvas, e);
-    context.strokeStyle = draw_color;
-    context.strokeRect(locA.x, locA.y, locB.x - locA.x, locB.y - locA.y);
+if (addTxt) {
+  addTxt.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      addNote();
+    }
   });
-};
+}
+
+if (searchTxt) {
+  searchTxt.addEventListener("input", searchNotes);
+}
+
+// Initialize on page load
+document.addEventListener("DOMContentLoaded", loadNotes);
