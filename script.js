@@ -39,7 +39,7 @@ function getPointerPos(evt) {
   };
 }
 
-// Initialize pointer events once
+// Initialize pointer event once
 function initPointerEvents() {
   canvas.addEventListener("mousedown", start, false);
   canvas.addEventListener("mousemove", draw, false);

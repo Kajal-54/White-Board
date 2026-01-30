@@ -1,5 +1,5 @@
 // ============================================
-// Notes App with localStorage persistence
+// Notes App with localStorage persistence and here
 // ============================================
 
 let notes = [];
